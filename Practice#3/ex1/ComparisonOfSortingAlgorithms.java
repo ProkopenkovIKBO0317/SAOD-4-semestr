@@ -14,18 +14,25 @@ public class Main {
         int size;
 
         System.out.print("Enter size of array: ");
-        size = sc.nextInt();
-        int[] arr = new int[size];
+        try {
+            size = sc.nextInt();
+            if (size < 0) {
+                System.out.println("Size of array must be > 0");
+                System.exit(0);
+            }
+            int[] arr = new int[size];
+            for (int i = 0; i < size; i++) {
+                System.out.print("Element " + (i + 1) + ": ");
+                arr[i] = sc.nextInt();
+            }
 
-        for (int i = 0; i < size; i++) {
-            System.out.print("Element " + (i+1) + ": ");
-            arr[i] = sc.nextInt();
+            inclusionSort(arr);
+            myShakerSort(arr);
+            showArray(arr);
+
+        } catch (Exception e) {
+            System.out.println("Incorrect data entry!");
         }
-
-        inclusionSort(arr);
-        myShakerSort(arr);
-        showArray(arr);
-
     }
 
     // Сортировка методом прямого включения
@@ -46,7 +53,7 @@ public class Main {
         System.out.printf("\nЧисло перестановок сортировкой методом прямого включения: " + counter);
     }
 
-    // Функция для обмена значений ячеей
+    // Функция для обмена значений ячеек
     public static void swapEl(int[] arr, int i) {
         int temp;
         temp = arr[i];
@@ -64,7 +71,6 @@ public class Main {
                 if (arr[i-1] > arr[i]) swapEl(arr, i);
                 leftMark++;
             }
-
             for (int i = leftMark; i <= rightMark; i++)
                 if (arr[i-1] > arr[i]) swapEl(arr, i);
                 rightMark--;

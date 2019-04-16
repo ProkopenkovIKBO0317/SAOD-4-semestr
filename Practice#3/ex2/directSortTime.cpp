@@ -99,6 +99,7 @@ int main()
 			if (!arr[i])
 				throw arr[i];
 		}
+    
 		// the first alghoritm
 		start = tick();
 		selectionSort(arr, size);

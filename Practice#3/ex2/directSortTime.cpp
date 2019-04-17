@@ -1,9 +1,10 @@
-// Practice3ex2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+/*
+* Запрограммировать три метода прямой сортировки.
+* Сравнить в программе время выполнения каждого из методов.
+*/
 
 #include <iostream>
 #include <intrin.h>
-#include <time.h>
 using namespace std;
 
 // сортировка с помощью прямого включения
@@ -115,17 +116,17 @@ int main()
 			arr3[i] = arr1[i];
 		}
 
-		// the first alghoritm
+		// время работы прямого выбора
 		start = tick();
 		selectionSort(arr1, size);
 		finish = tick();
 		double res1 = finish - start;
-		// the second alghoritm
+		// время работы прямого обмена
 		start = tick();
 		bubbleSort(arr2, size);
 		finish = tick();
 		double res2 = finish - start;
-		// the third alghoritm
+		// время работы прямого включения
 		start = tick();
 		inclusionSort(arr3, size);
 		finish = tick();

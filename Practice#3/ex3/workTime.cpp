@@ -40,7 +40,7 @@ void showArray(int* arr, int size)
 int main()
 {
 	/* ициниализация элементов программы */
-	bool check = true;
+	bool check = false;
 	const int size = 4;
 	int arr1[size];
 	int arr2[size];
@@ -59,7 +59,7 @@ int main()
 
 	clock_t start = clock(); // начало замера времени работы случайной сортировки
 	cout << "Sort is started...\n";
-	while (check == true)
+	while (check == false)
 	{
 		int index = rand() % (size-1) + 1;
 		int temp = arr2[0];
@@ -67,7 +67,7 @@ int main()
 		arr2[index] = temp;
 		showArray(arr2, size);
 		if (std::equal(std::begin(arr1), std::end(arr1), std::begin(arr2))) // проверка массивов на равенство
-			check = false;
+			check = true;
 	}
 	cout << "Sort is ended.";
 	clock_t end = clock(); // конец замера времени работы случайной сортировки

@@ -66,6 +66,7 @@ void showArray(int* arr, int size)
 	{
 		cout << arr[i] << " ";
 	}
+	cout << endl;
 }
 
 unsigned __int64 tick()
@@ -90,43 +91,58 @@ int main()
 		{
 			throw size;
 		}
-		int* arr = new int[size];
+		// создание массивов
+		int* arr1 = new int[size];
+		int* arr2 = new int[size];
+		int* arr3 = new int[size];
 
+		// заполнение первого массива
 		for (int i = 0; i < size; i++)
 		{
 			cout << "Element " << (i + 1) << ": ";
-			cin >> arr[i];
-			if (!arr[i])
-				throw arr[i];
+			cin >> arr1[i];
+			if (!(arr1[i] > 0) && !(arr1[i] < 0) && !(arr1[i] == 0))
+			{
+				cout << "Incorrect data entry!\n";
+				exit(0);
+			}
 		}
-    
+
+		// заполнение остальных массивов
+		for (int i = 0; i < size; i++)
+		{
+			arr2[i] = arr1[i];
+			arr3[i] = arr1[i];
+		}
+
 		// the first alghoritm
 		start = tick();
-		selectionSort(arr, size);
+		selectionSort(arr1, size);
 		finish = tick();
 		double res1 = finish - start;
 		// the second alghoritm
 		start = tick();
-		bubbleSort(arr, size);
+		bubbleSort(arr2, size);
 		finish = tick();
 		double res2 = finish - start;
 		// the third alghoritm
 		start = tick();
-		inclusionSort(arr, size);
+		inclusionSort(arr3, size);
 		finish = tick();
 		double res3 = finish - start;
 
-		showArray(arr, size);
+		cout << "Sorted array: ";
+		showArray(arr1, size);
 
-		cout << "Inclusion sort: " << (res3 / ((double)CLOCKS_PER_SEC)) << endl;
-		cout << "Bubble sort: " << (res2 / ((double)CLOCKS_PER_SEC)) << endl;
-		cout << "Selection sort: " << (res1 / ((double)CLOCKS_PER_SEC)) << endl;
+		cout << "The time Inclusion sort: " << res3 << " processor ticks."  << endl;
+		cout << "The time Bubble sort: " << res2  << " processor ticks." << endl;
+		cout << "The time Selection sort: " << res1 << " processor ticks." << endl;
 	}
 	catch (int e)
 	{
 		cout << "Incorrect data entry! The programe will be stoped.\n";
 	}
-	
+
 	return 0;
 }
 

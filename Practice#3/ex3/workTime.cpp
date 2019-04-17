@@ -66,7 +66,7 @@ int main()
 		arr2[0] = arr2[index];
 		arr2[index] = temp;
 		showArray(arr2, size);
-		if (std::equal(std::begin(arr1), std::end(arr1), std::begin(arr2))) // проверка массивов на равенство
+		if (equal(begin(arr1), end(arr1), begin(arr2))) // проверка массивов на равенство
 			check = true;
 	}
 	cout << "Sort is ended.";
